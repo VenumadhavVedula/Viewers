@@ -1,5 +1,5 @@
 {
-  "name": "ohif-monorepo-root",
+  "name": "devenv-ohif-monorepo-root",
   "private": true,
   "workspaces": {
     "packages": [
