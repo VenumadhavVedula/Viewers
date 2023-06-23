@@ -4,6 +4,7 @@ import {
   Enums,
   volumeLoader,
   utilities as utils,
+  setUseSharedArrayBuffer
 } from '@cornerstonejs/core';
 
 import getCornerstoneViewportType from '../../utils/getCornerstoneViewportType';
@@ -31,6 +32,7 @@ class CornerstoneCacheService {
 
   constructor(servicesManager: ServicesManager) {
     this.servicesManager = servicesManager;
+    setUseSharedArrayBuffer(false);
   }
 
   public getCacheSize() {

@@ -112,7 +112,7 @@ window.config = {
           href: '/',
         },
         React.createElement('img', {
-          src: 'http://localhost:3000/assets/simplirad_logo.png',
+          src: `${window.location.protocol}//${window.location.host}/preview/assets/simplirad_logo.png`,
           className: 'w-21 h-8',
         })
       );

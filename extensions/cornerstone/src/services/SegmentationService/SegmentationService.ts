@@ -588,7 +588,7 @@ class SegmentationService extends PubSubService {
         volumeId: segmentationId,
         targetBuffer: {
           type: 'Uint8Array',
-          sharedArrayBuffer: true,
+          sharedArrayBuffer: false,
         },
       }
     );
@@ -1015,7 +1015,7 @@ class SegmentationService extends PubSubService {
       volumeId: segmentationId,
       targetBuffer: {
         type: 'Uint8Array',
-        sharedArrayBuffer: true,
+        sharedArrayBuffer: false,
       },
     });
 
