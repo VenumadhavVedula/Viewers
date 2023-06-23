@@ -1,5 +1,5 @@
 window.config = {
-  routerBasename: '/',
+  routerBasename: '/preview/',
   // whiteLabeling: {},
   extensions: [],
   modes: [],
