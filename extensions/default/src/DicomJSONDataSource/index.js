@@ -5,6 +5,7 @@ import getImageId from '../DicomWebDataSource/utils/getImageId';
 import getDirectURL from '../utils/getDirectURL';
 
 const metadataProvider = OHIF.classes.MetadataProvider;
+const authheader = OHIF.DICOMWeb.getAuthorizationHeader({});
 
 const mappings = {
   studyInstanceUid: 'StudyInstanceUID',
@@ -57,7 +58,7 @@ function createDicomJSONApi(dicomJsonConfig) {
         });
       }
 
-      const response = await fetch(url);
+      const response = await fetch(url, { headers: authheader });
       let data = await response.json();
 
       const studyInstanceUIDs = data.studies.map(
@@ -94,7 +95,7 @@ function createDicomJSONApi(dicomJsonConfig) {
     },
     query: {
       studies: {
-        mapParams: () => { },
+        mapParams: () => {},
         search: async param => {
           const [key, value] = Object.entries(param)[0];
           const mappedParam = mappings[key];

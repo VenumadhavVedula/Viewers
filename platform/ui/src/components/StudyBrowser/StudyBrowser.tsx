@@ -75,44 +75,55 @@ const StudyBrowser = ({
     );
   };
 
+  const getStudyGroupPanel = () => {
+    const hideStudyPriorOpts = true;
+    if (hideStudyPriorOpts) {
+      return <></>;
+    } else {
+      return (
+        <div
+          className="flex flex-row items-center justify-center h-16 p-4 border-b w-100 border-secondary-light bg-primary-dark"
+          data-cy={'studyBrowser-panel'}
+        >
+          {/* TODO Revisit design of ButtonGroup later - for now use LegacyButton for its children.*/}
+          <ButtonGroup variant="outlined" color="secondary" splitBorder={false}>
+            {tabs.map(tab => {
+              const { name, label, studies } = tab;
+              const isActive = activeTabName === name;
+              const isDisabled = !studies.length;
+              // Apply the contrasting color for brighter button color visibility
+              const classStudyBrowser = customizationService?.getModeCustomization(
+                'class:StudyBrowser'
+              ) || {
+                true: 'default',
+                false: 'default',
+              };
+              const color = classStudyBrowser[`${isActive}`];
+              return (
+                <LegacyButton
+                  key={name}
+                  className={'text-white text-base p-2 min-w-18'}
+                  size="initial"
+                  color={color}
+                  bgColor={isActive ? 'bg-primary-main' : 'bg-black'}
+                  onClick={() => {
+                    onClickTab(name);
+                  }}
+                  disabled={isDisabled}
+                >
+                  {t(label)}
+                </LegacyButton>
+              );
+            })}
+          </ButtonGroup>
+        </div>
+      );
+    }
+  };
+
   return (
     <React.Fragment>
-      <div
-        className="flex flex-row items-center justify-center h-16 p-4 border-b w-100 border-secondary-light bg-primary-dark"
-        data-cy={'studyBrowser-panel'}
-      >
-        {/* TODO Revisit design of ButtonGroup later - for now use LegacyButton for its children.*/}
-        <ButtonGroup variant="outlined" color="secondary" splitBorder={false}>
-          {tabs.map(tab => {
-            const { name, label, studies } = tab;
-            const isActive = activeTabName === name;
-            const isDisabled = !studies.length;
-            // Apply the contrasting color for brighter button color visibility
-            const classStudyBrowser = customizationService?.getModeCustomization(
-              'class:StudyBrowser'
-            ) || {
-              true: 'default',
-              false: 'default',
-            };
-            const color = classStudyBrowser[`${isActive}`];
-            return (
-              <LegacyButton
-                key={name}
-                className={'text-white text-base p-2 min-w-18'}
-                size="initial"
-                color={color}
-                bgColor={isActive ? 'bg-primary-main' : 'bg-black'}
-                onClick={() => {
-                  onClickTab(name);
-                }}
-                disabled={isDisabled}
-              >
-                {t(label)}
-              </LegacyButton>
-            );
-          })}
-        </ButtonGroup>
-      </div>
+      {getStudyGroupPanel()}
       <div className="flex flex-col flex-1 overflow-auto ohif-scrollbar invisible-scrollbar">
         {getTabContent()}
       </div>

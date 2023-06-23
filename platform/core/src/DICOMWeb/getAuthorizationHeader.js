@@ -1,4 +1,4 @@
-import 'isomorphic-base64'
+import 'isomorphic-base64';
 import user from '../user';
 
 /**
@@ -12,7 +12,6 @@ import user from '../user';
  */
 export default function getAuthorizationHeader({ requestOptions } = {}, user) {
   const headers = {};
-
   // Check for OHIF.user since this can also be run on the server
   const accessToken = user && user.getAccessToken && user.getAccessToken();
 
@@ -29,7 +28,17 @@ export default function getAuthorizationHeader({ requestOptions } = {}, user) {
   // Auth for the user's default
   else if (accessToken) {
     headers.Authorization = `Bearer ${accessToken}`;
+  } else {
+    let dvauth = getDevenvBearerAuth();
+    if (dvauth) headers.Authorization = `Bearer ${dvauth}`;
   }
-
   return headers;
+}
+
+function getDevenvBearerAuth() {
+  let devenvAuthStr = localStorage.getItem('devenv_dev_token');
+  if (!devenvAuthStr) return;
+  let devenvAuth = JSON.parse(devenvAuthStr);
+  let access = devenvAuth && devenvAuth.access ? devenvAuth.access : '';
+  return access;
 }
