@@ -69,6 +69,10 @@ module.exports = (env, argv) => {
         // Hoisted Yarn Workspace Modules
         path.resolve(__dirname, '../../../node_modules'),
         SRC_DIR,
+        path.resolve(
+          __dirname,
+          'D:\\Venu\\Projects\\devenv\\ohif_viewer\\Viewers\\devenv-extensions\\devenv-simplirad-report-editor\\node_modules'
+        ),
       ],
     },
     plugins: [

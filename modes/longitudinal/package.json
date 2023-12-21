@@ -40,7 +40,8 @@
     "@ohif/extension-default": "3.7.0-beta.5",
     "@ohif/extension-dicom-pdf": "3.7.0-beta.5",
     "@ohif/extension-dicom-video": "3.7.0-beta.5",
-    "@ohif/extension-measurement-tracking": "3.7.0-beta.5"
+    "@ohif/extension-measurement-tracking": "3.7.0-beta.5",
+    "devenv-simplirad-report-editor": "0.0.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.20.13"

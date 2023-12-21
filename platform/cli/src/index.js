@@ -30,7 +30,7 @@ const packageJsonPath = path.join(runningDirectory, 'package.json');
 
 try {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-  if (packageJson.name !== 'ohif-monorepo-root') {
+  if (packageJson.name !== 'devenv-ohif-monorepo-root') {
     console.log(packageJson);
     console.log(
       chalk.red('ohif-cli must run from the root of the OHIF platform')

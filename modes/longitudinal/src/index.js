@@ -61,6 +61,7 @@ const extensionDependencies = {
   '@ohif/extension-cornerstone-dicom-rt': '^3.0.0',
   '@ohif/extension-dicom-pdf': '^3.0.1',
   '@ohif/extension-dicom-video': '^3.0.1',
+  'devenv-simplirad-report-editor': '^0.0.1',
 };
 
 function modeFactory() {
@@ -195,7 +196,11 @@ function modeFactory() {
             id: ohif.layout,
             props: {
               leftPanels: [tracked.thumbnailList],
-              rightPanels: [dicomSeg.panel, tracked.measurements],
+              rightPanels: [
+                dicomSeg.panel,
+                tracked.measurements,
+                'devenv-simplirad-report-editor.panelModule.sr_report_editor',
+              ],
               rightPanelDefaultClosed: true,
               viewports: [
                 {
