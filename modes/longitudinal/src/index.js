@@ -197,9 +197,9 @@ function modeFactory() {
             props: {
               leftPanels: [tracked.thumbnailList],
               rightPanels: [
+                'devenv-simplirad-report-editor.panelModule.sr_report_editor',
                 dicomSeg.panel,
                 tracked.measurements,
-                'devenv-simplirad-report-editor.panelModule.sr_report_editor',
               ],
               rightPanelDefaultClosed: true,
               viewports: [
